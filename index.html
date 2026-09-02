@@ -3,297 +3,1945 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SECRETTO.YOU</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Montserrat', sans-serif; background: #000 url('https://i.imgur.com/8Qm9QZq.jpg') no-repeat center top; background-size: cover; color:#fff; text-align:center; min-height:100vh; }
-.overlay { background: rgba(0,0,0,0.85); min-height:100vh; padding:20px 15px; }
-.container { padding:20px 15px; max-width:420px; margin:auto; }
-.logo { margin:10px 0 20px; }
-.logo svg { width:60px; height:60px; }
-.logo h1 { font-size:28px; font-weight:900; letter-spacing:2px; }
-.logo h1 span { color:#ff0040; }
-.sub { font-size:12px; color:#ff0040; letter-spacing:3px; margin-bottom:25px; }
-.caixa { background: rgba(10,10,10,0.8); padding:25px; border-radius:15px; border:1px solid #ff0040; box-shadow: 0 0 30px rgba(255,0,64,0.3); margin-bottom:20px; backdrop-filter: blur(5px); }
-input, select { width:100%; padding:14px; margin:8px 0; background:#111; border:1px solid #333; border-radius:8px; color:#fff; font-size:15px; text-align:center; font-weight:600; appearance: none; }
-.btn { width:100%; padding:16px; background: linear-gradient(90deg, #ff0040, #cc0033); border:none; border-radius:10px; color:#fff; font-size:16px; font-weight:900; cursor:pointer; margin-top:10px; text-transform:uppercase; }
-.btn-secundario { background: transparent; border:2px solid #ff0040; color:#ff0040; }
-.btn-insta { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); border: none; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration:none; }
-.btn-insta svg { width:20px; height:20px; fill:#fff; }
 
-.btn-gmail { 
-    background: linear-gradient(90deg, #EA4335, #C5221F); 
-    border: none; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 8px; 
-    text-decoration:none; 
-    margin-top:10px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.btn-gmail svg { width:20px; height:20px; }
-.email-suporte {
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #000 url('https://i.imgur.com/8Qm9QZq.jpg') no-repeat center top;
+    background-size: cover;
+    color: #fff;
     text-align: center;
-    font-size: 13px;
-    color: #aaa;
-    margin: 8px 0 15px 0;
+    min-height: 100vh;
+}
+
+.overlay {
+    background: rgba(0,0,0,0.85);
+    min-height: 100vh;
+    padding: 20px 15px;
+}
+
+.container {
+    padding: 20px 15px;
+    max-width: 420px;
+    margin: auto;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    margin: 10px 0 20px;
+}
+
+.logo svg {
+    width: 60px;
+    height: 60px;
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo h1 span {
+    color: #ff0040;
+}
+
+.sub {
+    font-size: 12px;
+    color: #ff0040;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   CAIXA
+========================= */
+
+.caixa {
+    background: rgba(10,10,10,0.8);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #ff0040;
+    box-shadow: 0 0 30px rgba(255,0,64,0.3);
+    margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+}
+
+input,
+select {
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
     font-weight: 600;
+    appearance: none;
 }
 
-#cadastro, #formulario, #resultado { display:none; }
-
-.radar-box { width:220px; height:220px; margin:20px auto; position:relative; border-radius:50%; background: radial-gradient(circle, rgba(255,0,64,0.15) 0%, transparent 60%); }
-.radar-circle { position:absolute; top:50%; left:50%; border:1px solid rgba(255,0,64,0.3); border-radius:50%; transform:translate(-50%,-50%); }
-.radar-circle.c1 { width:220px; height:220px; }
-.radar-circle.c2 { width:160px; height:160px; }
-.radar-circle.c3 { width:100px; height:100px; }
-.radar-line { position:absolute; top:50%; left:50%; width:2px; height:110px; background: linear-gradient(transparent, #ff0040); transform-origin: bottom center; animation: scan 3s linear infinite; }
-.radar-dot { position:absolute; width:6px; height:6px; background:#00ff88; border-radius:50%; box-shadow:0 0 10px #00ff88; animation: blink 1.5s infinite; }
-@keyframes scan { from {transform: translateX(-50%) rotate(0deg);} to {transform: translateX(-50%) rotate(360deg);} }
-@keyframes blink { 0%,100%{opacity:0;} 50%{opacity:1;} }
-
-.play-info { display:flex; justify-content:space-around; margin:20px 0; padding:15px; background:rgba(0,0,0,0.5); border-radius:10px; border:1px solid #333; }
-.play-num { font-size:18px; font-weight:900; color:#ff0040; }
-.stars { color:#ffb400; font-size:16px; }
-
-.como-usar { background:#0a0a0a; padding:20px; border-radius:15px; border:1px solid #333; text-align:left; margin:20px 0; }
-.como-titulo { font-size:16px; font-weight:900; color:#ff0040; margin-bottom:15px; text-align:center; }
-.etapa { display:flex; gap:12px; margin-bottom:12px; align-items:flex-start; }
-.etapa-num { background:#ff0040; color:#000; font-weight:900; width:25px; height:25px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
-.etapa-txt { font-size:12px; color:#ccc; line-height:1.4; }
-
-.cidade-titulo { color:#ff0040; font-size:14px; font-weight:900; margin:15px 0 10px; }
-
-.carrossel-container { position:relative; margin:15px 0; }
-.carrossel { display:flex; gap:12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom:10px; }
-.carrossel::-webkit-scrollbar { height:6px; }
-.carrossel::-webkit-scrollbar-thumb { background:#ff0040; border-radius:10px; }
-.perfil-card { min-width:160px; background:#111; border-radius:12px; border:2px solid #ff0040; overflow:hidden; scroll-snap-align: start; flex-shrink:0; }
-.perfil-foto { width:100%; height:200px; background-size:cover; background-position:center; filter: blur(10px); }
-.perfil-info { padding:10px; text-align:left; }
-.perfil-nome { font-size:13px; font-weight:900; }
-.perfil-cidade { font-size:11px; color:#00aaff; }
-
-.fidelidade-box { background: linear-gradient(135deg, #00ff88, #00aaff); padding:20px; border-radius:15px; margin:15px 0; border:2px solid #00ff88; box-shadow: 0 0 20px rgba(0,255,136,0.3); }
-.fidelidade-titulo { font-size:14px; font-weight:900; color:#000; margin-bottom:5px; }
-.fidelidade-percent { font-size:48px; font-weight:900; color:#000; line-height:1; }
-.fidelidade-texto { font-size:12px; color:#000; font-weight:700; margin-bottom:10px; }
-.fidelidade-selo { background:#000; color:#00ff88; padding:8px 12px; border-radius:8px; font-size:13px; font-weight:900; display:inline-block; }
-
-.card { background: rgba(10,0,10,0.9); padding:20px; border-radius:15px; border:2px solid #ff0040; }
-.status-ok { color:#00ff88; font-size:18px; margin-bottom:10px; font-weight:900; }
-.contador { color:#00aaff; font-size:18px; margin:10px 0; font-weight:700; }
-.loading-bar { background:#111; border-radius:10px; margin:15px 0; border:1px solid #ff0040; }
-.progress { height:25px; background: linear-gradient(90deg, #ff0040, #00aaff); width:0%; border-radius:10px; }
-.classificacao { display:inline-block; background:#ff0040; color:#000; padding:3px 8px; border-radius:5px; font-size:10px; font-weight:900; }
-.rodape { font-size:10px; color:#444; margin-top:20px; }
-.arraste { font-size:10px; color:#aaa; margin-top:5px; }
-</style>
-</head>
-<body>
-<div class="overlay">
-<div class="container">
-    <div class="logo">
-        <svg viewBox="0 0 24 24"><path fill="#ff0040" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        <h1>SECRETTO<span>.YOU</span></h1>
-        <p class="sub">TESTE DE COMPATIBILIDADE</p>
-    </div>
-
-    <div class="play-info">
-        <div><div class="stars">★★★★★ 4.8</div><div style="font-size:9px; color:#aaa;">100 Mil Avaliações</div></div>
-        <div><div class="play-num">1M+</div><div style="font-size:9px; color:#aaa;">Usuários</div></div>
-        <div><div class="classificacao">+18</div><div style="font-size:9px; color:#aaa;">Classificação</div></div>
-    </div>
-
-    <div class="caixa" id="cadastro">
-        <p style="color:#ff0040; font-size:20px; font-weight:900;">CRIAR PERFIL</p>
-        <input type="text" id="cad_nome" placeholder="SEU PRIMEIRO NOME">
-        <input type="number" id="cad_idade" placeholder="SUA IDADE" min="16" max="99">
-        <button class="btn" onclick="salvarCadastro()">COMEÇAR BUSCA 🔎</button>
-    </div>
-
-    <div class="caixa" id="formulario">
-        <input type="text" id="nome" placeholder="NOME DA PESSOA">
-        <input type="number" id="idade" placeholder="IDADE DA PESSOA" min="16" max="99">
-        <input type="text" id="cidade" placeholder="CIDADE - Ex: Rio de Janeiro">
-
-        <p style="margin:15px 0 5px; font-size:12px; color:#aaa;">ESCOLHA A REDE SOCIAL</p>
-        <select id="app">
-            <option value="">SELECIONE O APP</option>
-            <option value="Tinder">Tinder</option>
-        </select>
-
-        <select id="sexo">
-            <option value="mulher">BUSCAR MULHERES</option>
-            <option value="homem">BUSCAR HOMENS</option>
-        </select>
-        <button class="btn" onclick="detectar()">[ INICIAR BUSCA ]</button>
-    </div>
-
-    <div id="resultado"></div>
-
-    <div class="como-usar" id="comoUsar">
-        <p class="como-titulo">COMO USAR O SITE</p>
-        <div class="etapa">
-            <div class="etapa-num">1</div>
-            <div class="etapa-txt"><b>Preencha os dados:</b> Nome, idade e cidade da pessoa</div>
-        </div>
-        <div class="etapa">
-            <div class="etapa-num">2</div>
-            <div class="etapa-txt"><b>Escolha a rede social:</b> Selecione qual app você quer</div>
-        </div>
-        <div class="etapa">
-            <div class="etapa-num">3</div>
-            <div class="etapa-txt"><b>Arraste pro lado:</b> Veja todos os perfis encontrados</div>
-        </div>
-        <div class="etapa">
-            <div class="etapa-num">4</div>
-            <div class="etapa-txt"><b>Nova Consulta:</b> Clique pra buscar outra pessoa</div>
-        </div>
-    </div>
-
-    <a href="https://www.instagram.com/secretto.yo?igsh=bzRpYWwwbGo2cDRl&utm_source=qr" target="_blank" class="btn btn-insta">
-        <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 9.2v5.6c0 4.6-2.6 7.2-6.8 7.2H7.8C4.6 22 2 19.4 2 14.8V9.2C2 4.6 4.6 2 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 20.39 5.61 22 7.6 22h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
-        NOSSO INSTAGRAM
-    </a>
-
-    <a href="mailto:Secrettoyou2026@gmail.com" target="_blank" class="btn btn-gmail">
-        <svg viewBox="0 0 24 24"><path fill="#fff" d="M24 4.5c0-1.61-.59-2.38-2.14-2.38h-19.7c-1.56 0-2.16.78-2.16 2.38v15.1c0 1.6.6 2.4 2.16 2.4h19.7c1.55 0 2.14-.8 2.14-2.4v-15.1zm-22.4 1.5l10.2 7.8 10.2-7.8v-1.5l-10.2 7.8-10.2-7.8v1.5zm22.4 14.1c0 .7-.3 1-1 1h-19.7c-.7 0-1-.3-1-1v-13.6l11.7 9 11.7-9v13.6z"/></svg>
-        SUPORTE VIA GMAIL
-    </a>
-
-    <p class="rodape">SECRETTO.YOU v5.8 - <a href="https://secrettoyou.shop" style="color:#444; text-decoration:none;">secrettoyou.shop</a></p>
-</div>
-</div>
-
-<script>
-let cidadeAlvo = '';
-let perfis = [];
-let nomeBuscado = '';
-
-const nomesHomem = ["Pedro Santos","Lucas Oliveira","Rafael Lima","Gustavo Pereira","Felipe Rodrigues","Bruno Costa","Matheus Almeida","Gabriel Souza","Daniel Rocha","Thiago Ferreira","Leonardo Martins","Diego Silva","Caio Mendes","Arthur Gomes","Enzo Ribeiro"];
-const nomesMulher = ["Mariana Silva","Julia Costa","Amanda Rocha","Beatriz Almeida","Camila Souza","Larissa Pereira","Fernanda Lima","Juliana Rocha","Patricia Santos","Aline Oliveira","Isabela Martins","Bruna Gomes","Gabriela Ribeiro","Carolina Dias","Vanessa Correia"];
-
-function salvarCadastro(){
-    let nome = document.getElementById('cad_nome').value;
-    if(nome.length < 2){ alert('Preencha seu nome'); return; }
-    localStorage.setItem('secretto_user', nome);
-    document.getElementById('cadastro').style.display='none';
-    document.getElementById('formulario').style.display='block';
+.btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #ff0040, #cc0033);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top: 10px;
+    text-transform: uppercase;
 }
 
-function detectar(){
-    let app = document.getElementById('app').value;
-    nomeBuscado = document.getElementById('nome').value || 'Pessoa';
-    if(app === ''){ alert('Selecione uma rede social'); return; }
-    cidadeAlvo = document.getElementById('cidade').value || 'Sua Cidade';
-    gerarPerfis();
-    document.getElementById('formulario').style.display='none';
-    document.getElementById('comoUsar').style.display='none';
-    document.getElementById('resultado').style.display='block';
-    document.getElementById('resultado').innerHTML = `
-    <div class="caixa">
-        <p style="color:#00aaff; font-size:12px; font-weight:700;">ANALISANDO ${nomeBuscado.toUpperCase()} EM ${app} - ${cidadeAlvo}...</p>
-        <div class="radar-box">
-            <div class="radar-circle c1"></div>
-            <div class="radar-circle c2"></div>
-            <div class="radar-circle c3"></div>
-            <div class="radar-line"></div>
-            <div class="radar-dot" style="top:30%; left:60%;"></div>
-            <div class="radar-dot" style="top:70%; left:40%;"></div>
-        </div>
-        <div class="loading-bar"><div class="progress" id="progress"></div></div>
-        <button class="btn" onclick="mostrarResultado()">VER RESULTADO</button>
-    </div>`;
-    simularProgresso();
+.btn-secundario {
+    background: transparent;
+    border: 2px solid #ff0040;
+    color: #ff0040;
 }
 
-function simularProgresso(){
-    let p = 0; let el = document.getElementById('progress');
-    let i = setInterval(()=>{ p+=5; el.style.width=p+'%'; if(p>=100) clearInterval(i); }, 120);
+/* =========================
+   INSTAGRAM
+========================= */
+
+.btn-insta {
+    background: linear-gradient(
+        45deg,
+        #f09433 0%,
+        #e6683c 25%,
+        #dc2743 50%,
+        #cc2366 75%,
+        #bc1888 100%
+    );
+
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
 }
 
-function gerarPerfis(){
-    let sexo = document.getElementById('sexo').value;
-    let idadeBase = parseInt(document.getElementById('idade').value) || 20;
-    let qtdPerfis = Math.floor(Math.random() * 9) + 4; 
-    perfis = [];
-    
-    let listaNomes = sexo === 'mulher'? [...nomesMulher] : [...nomesHomem];
-    listaNomes.sort(() => 0.5 - Math.random());
+.btn-insta svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
 
-    let fotosUsadas = [];
+/* =========================
+   GMAIL
+========================= */
 
-    for(let i=0; i<qtdPerfis; i++){
-        let idadeVariada = idadeBase + Math.floor(Math.random() * 13) - 6;
-        if(idadeVariada < 18) idadeVariada = 18;
-        if(idadeVariada > 55) idadeVariada = 55;
+.btn-gmail {
+    background: linear-gradient(90deg, #EA4335, #C5221F);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    margin-top: 10px;
+}
 
-        let foto;
-        do {
-            foto = Math.floor(Math.random()*70) + 1; 
-        } while(fotosUsadas.includes(foto));
-        fotosUsadas.push(foto);
+.btn-gmail svg {
+    width: 20px;
+    height: 20px;
+}
 
-        perfis.push({
-            nome: listaNomes[i], 
-            idade: idadeVariada, 
-            foto: foto
-        });
+/* =========================
+   TELAS
+========================= */
+
+#cadastro,
+#formulario,
+#resultado {
+    display: none;
+}
+
+
+/* =====================================================
+   RADAR NOVO
+===================================================== */
+
+.radar-box {
+
+    width: 220px;
+    height: 220px;
+
+    margin: 25px auto;
+
+    position: relative;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,0,64,0.14) 0%,
+            rgba(255,0,64,0.07) 25%,
+            rgba(255,0,64,0.03) 48%,
+            rgba(0,0,0,0.96) 75%
+        );
+
+    border: 1px solid rgba(255,0,64,0.55);
+
+    box-shadow:
+        0 0 10px rgba(255,0,64,0.15),
+        0 0 30px rgba(255,0,64,0.12),
+        inset 0 0 30px rgba(255,0,64,0.12);
+}
+
+
+/* =========================
+   CÍRCULOS
+========================= */
+
+.radar-circle {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(255,0,64,0.30);
+
+    pointer-events: none;
+}
+
+.radar-circle.c1 {
+    width: 100%;
+    height: 100%;
+}
+
+.radar-circle.c2 {
+    width: 75%;
+    height: 75%;
+}
+
+.radar-circle.c3 {
+    width: 50%;
+    height: 50%;
+}
+
+.radar-circle.c4 {
+    width: 25%;
+    height: 25%;
+}
+
+
+/* =========================
+   LINHAS DO RADAR
+========================= */
+
+.radar-box::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 1px;
+
+    left: 0;
+    top: 50%;
+
+    background: rgba(255,0,64,0.28);
+
+    z-index: 1;
+}
+
+.radar-box::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 1px;
+    height: 100%;
+
+    left: 50%;
+    top: 0;
+
+    background: rgba(255,0,64,0.28);
+
+    z-index: 1;
+}
+
+
+/* =========================
+   LINHAS DIAGONAIS
+========================= */
+
+.radar-diagonal {
+
+    position: absolute;
+
+    width: 100%;
+    height: 1px;
+
+    left: 0;
+    top: 50%;
+
+    background: rgba(255,0,64,0.12);
+
+    z-index: 1;
+
+    transform: rotate(45deg);
+}
+
+.radar-diagonal.two {
+    transform: rotate(-45deg);
+}
+
+
+/* =====================================================
+   FEIXE DO RADAR
+===================================================== */
+
+.radar-line {
+
+    position: absolute;
+
+    width: 50%;
+
+    height: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform-origin: 0% 0%;
+
+    z-index: 3;
+
+    animation: radarRotate 2.4s linear infinite;
+}
+
+
+/* área iluminada */
+
+.radar-line::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 150px;
+    height: 150px;
+
+    transform-origin: 0 0;
+
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(255,0,64,0.02) 10deg,
+        rgba(255,0,64,0.05) 20deg,
+        rgba(255,0,64,0.12) 30deg,
+        rgba(255,0,64,0.25) 40deg,
+        rgba(255,0,64,0.40) 48deg,
+        transparent 52deg
+    );
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 100%
+    );
+}
+
+
+/* linha principal */
+
+.radar-line::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 2px;
+    height: 110px;
+
+    left: 0;
+    top: 0;
+
+    background: linear-gradient(
+        to bottom,
+        #ff0040 0%,
+        rgba(255,0,64,0.75) 40%,
+        rgba(255,0,64,0) 100%
+    );
+
+    box-shadow:
+        0 0 5px #ff0040,
+        0 0 12px rgba(255,0,64,0.8);
+
+    transform-origin: top center;
+
+    transform: rotate(-45deg);
+}
+
+
+/* =========================
+   ROTAÇÃO
+========================= */
+
+@keyframes radarRotate {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
 
-function mostrarResultado(){
-    let app = document.getElementById('app').value;
-    let qtdEncontrados = Math.floor(Math.random() * 200) + 50;
-    let qtdCidade = Math.floor(Math.random() * 50) + 20;
-    
+
+/* =====================================================
+   CENTRO
+===================================================== */
+
+.radar-center {
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #ff0040;
+
+    border-radius: 50%;
+
+    z-index: 10;
+
+    box-shadow:
+        0 0 5px #ff0040,
+        0 0 12px #ff0040,
+        0 0 25px rgba(255,0,64,0.8);
+
+    animation: centerPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes centerPulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.4);
+        opacity: 1;
+    }
+}
+
+
+/* =====================================================
+   PONTOS DETECTADOS
+===================================================== */
+
+.radar-dot {
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #00ff88;
+
+    z-index: 8;
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 5px #00ff88,
+        0 0 12px #00ff88,
+        0 0 22px rgba(0,255,136,0.8);
+
+    animation: detectedPulse 2.4s ease-in-out infinite;
+}
+
+
+/* ponto 1 */
+
+.radar-dot.dot1 {
+
+    top: 27%;
+    left: 67%;
+
+    animation-delay: 0.4s;
+}
+
+
+/* ponto 2 */
+
+.radar-dot.dot2 {
+
+    top: 67%;
+    left: 32%;
+
+    animation-delay: 1.1s;
+}
+
+
+/* ponto 3 */
+
+.radar-dot.dot3 {
+
+    top: 43%;
+    left: 23%;
+
+    animation-delay: 1.7s;
+}
+
+
+/* ponto 4 */
+
+.radar-dot.dot4 {
+
+    top: 72%;
+    left: 68%;
+
+    animation-delay: 2s;
+}
+
+
+/* pontos piscando */
+
+@keyframes detectedPulse {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+
+    20% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+
+    40% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+
+    70% {
+        opacity: 0.25;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+}
+
+
+/* =========================
+   TEXTO RADAR
+========================= */
+
+.radar-status {
+
+    font-size: 10px;
+
+    color: #ff0040;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+
+    margin-top: -10px;
+
+    animation: statusBlink 1.5s infinite;
+}
+
+@keyframes statusBlink {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   AVALIAÇÕES
+========================= */
+
+.play-info {
+
+    display: flex;
+
+    justify-content: space-around;
+
+    margin: 20px 0;
+
+    padding: 15px;
+
+    background: rgba(0,0,0,0.5);
+
+    border-radius: 10px;
+
+    border: 1px solid #333;
+}
+
+.play-num {
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    color: #ff0040;
+}
+
+.stars {
+
+    color: #ffb400;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   COMO USAR
+========================= */
+
+.como-usar {
+
+    background: #0a0a0a;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    border: 1px solid #333;
+
+    text-align: left;
+
+    margin: 20px 0;
+}
+
+.como-titulo {
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    color: #ff0040;
+
+    margin-bottom: 15px;
+
+    text-align: center;
+}
+
+.etapa {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+
+    align-items: flex-start;
+}
+
+.etapa-num {
+
+    background: #ff0040;
+
+    color: #000;
+
+    font-weight: 900;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 12px;
+
+    flex-shrink: 0;
+}
+
+.etapa-txt {
+
+    font-size: 12px;
+
+    color: #ccc;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   RESULTADO
+========================= */
+
+.cidade-titulo {
+
+    color: #ff0040;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    margin: 15px 0 10px;
+}
+
+.carrossel-container {
+
+    position: relative;
+
+    margin: 15px 0;
+}
+
+.carrossel {
+
+    display: flex;
+
+    gap: 12px;
+
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    padding-bottom: 10px;
+}
+
+.carrossel::-webkit-scrollbar {
+
+    height: 6px;
+}
+
+.carrossel::-webkit-scrollbar-thumb {
+
+    background: #ff0040;
+
+    border-radius: 10px;
+}
+
+.perfil-card {
+
+    min-width: 160px;
+
+    background: #111;
+
+    border-radius: 12px;
+
+    border: 2px solid #ff0040;
+
+    overflow: hidden;
+
+    scroll-snap-align: start;
+
+    flex-shrink: 0;
+}
+
+.perfil-foto {
+
+    width: 100%;
+
+    height: 200px;
+
+    background-size: cover;
+
+    background-position: center;
+
+    filter: blur(10px);
+}
+
+.perfil-info {
+
+    padding: 10px;
+
+    text-align: left;
+}
+
+.perfil-nome {
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+.perfil-cidade {
+
+    font-size: 11px;
+
+    color: #00aaff;
+}
+
+
+/* =========================
+   FIDELIDADE
+========================= */
+
+.infidelidade-box {
+
+    background: linear-gradient(
+        135deg,
+        #ff0040,
+        #ff6b00
+    );
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    margin: 15px 0;
+
+    border: 2px solid #ff0040;
+
+    box-shadow:
+        0 0 20px rgba(255,0,64,0.3);
+}
+
+.infidelidade-titulo {
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    color: #000;
+
+    margin-bottom: 5px;
+}
+
+.infidelidade-percent {
+
+    font-size: 48px;
+
+    font-weight: 900;
+
+    color: #000;
+
+    line-height: 1;
+}
+
+.infidelidade-texto {
+
+    font-size: 12px;
+
+    color: #000;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+.infidelidade-selo {
+
+    background: #000;
+
+    color: #ff0040;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    display: inline-block;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+
+    background: rgba(10,0,10,0.9);
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    border: 2px solid #ff0040;
+}
+
+.status-ok {
+
+    color: #00ff88;
+
+    font-size: 18px;
+
+    margin-bottom: 10px;
+
+    font-weight: 900;
+}
+
+.contador {
+
+    color: #00aaff;
+
+    font-size: 18px;
+
+    margin: 10px 0;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   BARRA
+========================= */
+
+.loading-bar {
+
+    background: #111;
+
+    border-radius: 10px;
+
+    margin: 15px 0;
+
+    border: 1px solid #ff0040;
+
+    overflow: hidden;
+}
+
+.progress {
+
+    height: 25px;
+
+    background: linear-gradient(
+        90deg,
+        #ff0040,
+        #00aaff
+    );
+
+    width: 0%;
+
+    border-radius: 10px;
+
+    transition: width .2s ease;
+}
+
+.classificacao {
+
+    display: inline-block;
+
+    background: #ff0040;
+
+    color: #000;
+
+    padding: 3px 8px;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.rodape {
+
+    font-size: 10px;
+
+    color: #444;
+
+    margin-top: 20px;
+}
+
+.arraste {
+
+    font-size: 10px;
+
+    color: #aaa;
+
+    margin-top: 5px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="overlay">
+
+<div class="container">
+
+
+<!-- =========================
+     LOGO
+========================= -->
+
+<div class="logo">
+
+<svg viewBox="0 0 24 24">
+
+<path
+fill="#ff0040"
+d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+/>
+
+</svg>
+
+<h1>
+SECRETTO<span>.YOU</span>
+</h1>
+
+<p class="sub">
+TESTE DE COMPATIBILIDADE
+</p>
+
+</div>
+
+
+<!-- =========================
+     INFORMAÇÕES
+========================= -->
+
+<div class="play-info">
+
+<div>
+
+<div class="stars">
+★★★★★ 4.8
+</div>
+
+<div style="font-size:9px;color:#aaa;">
+100 Mil Avaliações
+</div>
+
+</div>
+
+
+<div>
+
+<div class="play-num">
+1M+
+</div>
+
+<div style="font-size:9px;color:#aaa;">
+Usuários
+</div>
+
+</div>
+
+
+<div>
+
+<div class="classificacao">
++18
+</div>
+
+<div style="font-size:9px;color:#aaa;">
+Classificação
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     CADASTRO
+========================= -->
+
+<div class="caixa" id="cadastro">
+
+<p style="
+color:#ff0040;
+font-size:20px;
+font-weight:900;
+">
+
+CRIAR PERFIL
+
+</p>
+
+<input
+type="text"
+id="cad_nome"
+placeholder="SEU PRIMEIRO NOME"
+>
+
+<input
+type="number"
+id="cad_idade"
+placeholder="SUA IDADE"
+min="16"
+max="99"
+>
+
+<button
+class="btn"
+onclick="salvarCadastro()"
+>
+
+COMEÇAR BUSCA 🔎
+
+</button>
+
+</div>
+
+
+<!-- =========================
+     FORMULÁRIO
+========================= -->
+
+<div class="caixa" id="formulario">
+
+<input
+type="text"
+id="nome"
+placeholder="NOME DA PESSOA"
+>
+
+<input
+type="number"
+id="idade"
+placeholder="IDADE DA PESSOA"
+min="16"
+max="99"
+>
+
+<input
+type="text"
+id="cidade"
+placeholder="CIDADE - Ex: Rio de Janeiro"
+>
+
+
+<p style="
+margin:15px 0 5px;
+font-size:12px;
+color:#aaa;
+">
+
+ESCOLHA A REDE SOCIAL
+
+</p>
+
+
+<select id="app">
+
+<option value="">
+SELECIONE O APP
+</option>
+
+<option value="Tinder">
+Tinder
+</option>
+
+</select>
+
+
+<select id="sexo">
+
+<option value="mulher">
+BUSCAR MULHERES
+</option>
+
+<option value="homem">
+BUSCAR HOMENS
+</option>
+
+</select>
+
+
+<button
+class="btn"
+onclick="detectar()"
+>
+
+[ INICIAR BUSCA ]
+
+</button>
+
+</div>
+
+
+<!-- =========================
+     RESULTADO
+========================= -->
+
+<div id="resultado"></div>
+
+
+<!-- =========================
+     COMO USAR
+========================= -->
+
+<div
+class="como-usar"
+id="comoUsar"
+>
+
+<p class="como-titulo">
+COMO USAR O SITE
+</p>
+
+
+<div class="etapa">
+
+<div class="etapa-num">
+1
+</div>
+
+<div class="etapa-txt">
+
+<b>Preencha os dados:</b>
+
+Nome, idade e cidade da pessoa
+
+</div>
+
+</div>
+
+
+<div class="etapa">
+
+<div class="etapa-num">
+2
+</div>
+
+<div class="etapa-txt">
+
+<b>Escolha a rede social:</b>
+
+Selecione qual app você quer
+
+</div>
+
+</div>
+
+
+<div class="etapa">
+
+<div class="etapa-num">
+3
+</div>
+
+<div class="etapa-txt">
+
+<b>Arraste pro lado:</b>
+
+Veja todos os perfis encontrados
+
+</div>
+
+</div>
+
+
+<div class="etapa">
+
+<div class="etapa-num">
+4
+</div>
+
+<div class="etapa-txt">
+
+<b>Nova Consulta:</b>
+
+Clique pra buscar outra pessoa
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     INSTAGRAM
+========================= -->
+
+<a
+href="https://www.instagram.com/secretto.yo?igsh=bzRpYWwwbGo2cDRl&utm_source=qr"
+target="_blank"
+class="btn btn-insta"
+>
+
+<svg viewBox="0 0 24 24">
+
+<path d="M7.8 2h8.4C19.4 2 22 4.6 22 9.2v5.6c0 4.6-2.6 7.2-6.8 7.2H7.8C4.6 22 2 19.4 2 14.8V9.2C2 4.6 4.6 2 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 20.39 5.61 22 7.6 22h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+
+</svg>
+
+NOSSO INSTAGRAM
+
+</a>
+
+
+<!-- =========================
+     GMAIL
+========================= -->
+
+<a
+href="mailto:Secrettoyou2026@gmail.com"
+target="_blank"
+class="btn btn-gmail"
+>
+
+<svg viewBox="0 0 24 24">
+
+<path
+fill="#fff"
+d="M24 4.5c0-1.61-.59-2.38-2.14-2.38h-19.7c-1.56 0-2.16.78-2.16 2.38v15.1c0 1.6.6 2.4 2.16 2.4h19.7c1.55 0 2.14-.8 2.14-2.4v-15.1zm-22.4 1.5l10.2 7.8 10.2-7.8v-1.5l-10.2 7.8-10.2-7.8v1.5zm22.4 14.1c0 .7-.3 1-1 1h-19.7c-.7 0-1-.3-1-1v-13.6l11.7 9 11.7-9v13.6z"
+/>
+
+</svg>
+
+SUPORTE VIA GMAIL
+
+</a>
+
+
+<p class="rodape">
+
+SECRETTO.YOU v5.8 -
+
+<a
+href="https://secrettoyou.shop"
+style="color:#444;text-decoration:none;"
+>
+
+secrettoyou.shop
+
+</a>
+
+</p>
+
+
+</div>
+</div>
+
+
+<script>
+
+let cidadeAlvo = '';
+
+let perfis = [];
+
+let nomeBuscado = '';
+
+
+/* =========================
+   NOMES
+========================= */
+
+const nomesHomem = [
+    "Pedro Santos",
+    "Lucas Oliveira",
+    "Rafael Lima",
+    "Gustavo Pereira",
+    "Felipe Rodrigues",
+    "Bruno Costa",
+    "Matheus Almeida",
+    "Gabriel Souza",
+    "Daniel Rocha",
+    "Thiago Ferreira",
+    "Leonardo Martins",
+    "Diego Silva",
+    "Caio Mendes",
+    "Arthur Gomes",
+    "Enzo Ribeiro"
+];
+
+
+const nomesMulher = [
+    "Mariana Silva",
+    "Julia Costa",
+    "Amanda Rocha",
+    "Beatriz Almeida",
+    "Camila Souza",
+    "Larissa Pereira",
+    "Fernanda Lima",
+    "Juliana Rocha",
+    "Patricia Santos",
+    "Aline Oliveira",
+    "Isabela Martins",
+    "Bruna Gomes",
+    "Gabriela Ribeiro",
+    "Carolina Dias",
+    "Vanessa Correia"
+];
+
+
+/* =========================
+   CADASTRO
+========================= */
+
+function salvarCadastro() {
+
+    let nome =
+        document.getElementById('cad_nome').value;
+
+    if(nome.length < 2) {
+
+        alert('Preencha seu nome');
+
+        return;
+    }
+
+    localStorage.setItem(
+        'secretto_user',
+        nome
+    );
+
+    document.getElementById(
+        'cadastro'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'formulario'
+    ).style.display = 'block';
+
+}
+
+
+/* =========================
+   INICIAR BUSCA
+========================= */
+
+function detectar() {
+
+    let app =
+        document.getElementById('app').value;
+
+    nomeBuscado =
+        document.getElementById('nome').value || 'Pessoa';
+
+    if(app === '') {
+
+        alert('Selecione uma rede social');
+
+        return;
+    }
+
+    cidadeAlvo =
+        document.getElementById('cidade').value ||
+        'Sua Cidade';
+
+
+    gerarPerfis();
+
+
+    document.getElementById(
+        'formulario'
+    ).style.display = 'none';
+
+
+    document.getElementById(
+        'comoUsar'
+    ).style.display = 'none';
+
+
+    document.getElementById(
+        'resultado'
+    ).style.display = 'block';
+
+
+    document.getElementById(
+        'resultado'
+    ).innerHTML = `
+
+    <div class="caixa">
+
+        <p style="
+        color:#00aaff;
+        font-size:12px;
+        font-weight:700;
+        ">
+
+        ANALISANDO
+
+        ${nomeBuscado.toUpperCase()}
+
+        EM
+
+        ${app}
+
+        -
+
+        ${cidadeAlvo}...
+
+        </p>
+
+
+        <!-- RADAR -->
+
+        <div class="radar-box">
+
+            <div class="radar-circle c1"></div>
+
+            <div class="radar-circle c2"></div>
+
+            <div class="radar-circle c3"></div>
+
+            <div class="radar-circle c4"></div>
+
+
+            <div class="radar-diagonal"></div>
+
+            <div class="radar-diagonal two"></div>
+
+
+            <div class="radar-line"></div>
+
+
+            <div class="radar-center"></div>
+
+
+            <div class="radar-dot dot1"></div>
+
+            <div class="radar-dot dot2"></div>
+
+            <div class="radar-dot dot3"></div>
+
+            <div class="radar-dot dot4"></div>
+
+        </div>
+
+
+        <div class="radar-status">
+
+            ● VARREDURA EM ANDAMENTO
+
+        </div>
+
+
+        <div class="loading-bar">
+
+            <div
+            class="progress"
+            id="progress"
+            ></div>
+
+        </div>
+
+
+        <button
+        class="btn"
+        onclick="mostrarResultado()"
+        >
+
+        VER RESULTADO
+
+        </button>
+
+    </div>
+
+    `;
+
+
+    simularProgresso();
+
+}
+
+
+/* =========================
+   PROGRESSO
+========================= */
+
+function simularProgresso() {
+
+    let p = 0;
+
+    let el =
+        document.getElementById('progress');
+
+
+    let i = setInterval(() => {
+
+        p += 5;
+
+        if(p > 100)
+            p = 100;
+
+
+        if(el)
+            el.style.width = p + '%';
+
+
+        if(p >= 100) {
+
+            clearInterval(i);
+
+        }
+
+    }, 120);
+
+}
+
+
+/* =========================
+   GERAR PERFIS
+========================= */
+
+function gerarPerfis() {
+
+    let sexo =
+        document.getElementById('sexo').value;
+
+
+    let idadeBase =
+        parseInt(
+            document.getElementById('idade').value
+        ) || 20;
+
+
+    let qtdPerfis =
+        Math.floor(
+            Math.random() * 9
+        ) + 4;
+
+
+    perfis = [];
+
+
+    let listaNomes =
+        sexo === 'mulher'
+        ?
+        [...nomesMulher]
+        :
+        [...nomesHomem];
+
+
+    listaNomes.sort(
+        () => 0.5 - Math.random()
+    );
+
+
+    let fotosUsadas = [];
+
+
+    for(
+        let i = 0;
+        i < qtdPerfis;
+        i++
+    ) {
+
+        let idadeVariada =
+            idadeBase +
+            Math.floor(
+                Math.random() * 13
+            ) - 6;
+
+
+        if(idadeVariada < 18)
+            idadeVariada = 18;
+
+
+        if(idadeVariada > 55)
+            idadeVariada = 55;
+
+
+        let foto;
+
+
+        do {
+
+            foto =
+                Math.floor(
+                    Math.random() * 70
+                ) + 1;
+
+        }
+
+        while(
+            fotosUsadas.includes(foto)
+        );
+
+
+        fotosUsadas.push(foto);
+
+
+        perfis.push({
+
+            nome: listaNomes[i],
+
+            idade: idadeVariada,
+
+            foto: foto
+
+        });
+
+    }
+
+}
+
+
+/* =========================
+   RESULTADO
+========================= */
+
+function mostrarResultado() {
+
+    let app =
+        document.getElementById('app').value;
+
+
+    let qtdEncontrados =
+        Math.floor(
+            Math.random() * 200
+        ) + 50;
+
+
+    let qtdCidade =
+        Math.floor(
+            Math.random() * 50
+        ) + 20;
+
+
     let carrosselHTML = '';
+
+
     perfis.forEach(p => {
+
         carrosselHTML += `
+
         <div class="perfil-card">
-            <div class="perfil-foto" style="background-image:url(https://i.pravatar.cc/300?img=${p.foto})"></div>
+
+            <div
+            class="perfil-foto"
+            style="
+            background-image:url(
+            https://i.pravatar.cc/300?img=${p.foto}
+            )
+            "
+            ></div>
+
+
             <div class="perfil-info">
-                <div class="perfil-nome">${p.nome}, ${p.idade}</div>
-                <div class="perfil-cidade">📍 ${cidadeAlvo}</div>
+
+                <div class="perfil-nome">
+
+                    ${p.nome}, ${p.idade}
+
+                </div>
+
+
+                <div class="perfil-cidade">
+
+                    📍 ${cidadeAlvo}
+
+                </div>
+
             </div>
-        </div>`;
+
+        </div>
+
+        `;
+
     });
 
-    document.getElementById('resultado').innerHTML = `
+
+    document.getElementById(
+        'resultado'
+    ).innerHTML = `
+
     <div class="card">
-        <p class="status-ok">✅ ANÁLISE COMPLETA: ${nomeBuscado.toUpperCase()}</p>
-        
+
+        <p class="status-ok">
+
+        ✅ ANÁLISE COMPLETA:
+
+        ${nomeBuscado.toUpperCase()}
+
+        </p>
+
+
         <div class="infidelidade-box">
-            <div class="infidelidade-titulo">ÍNDICE DE INFIDELIDADE</div>
-            <div class="infidelidade-percent">70%</div>
-            <div class="infidelidade-texto">CHANCE DE TRAIÇÃO</div>
-            <div class="infidelidade-selo">✓ RASTRO DE TRAIÇÃO</div>
+
+            <div class="infidelidade-titulo">
+
+                ÍNDICE DE INFIDELIDADE
+
+            </div>
+
+
+            <div class="infidelidade-percent">
+
+                70%
+
+            </div>
+
+
+            <div class="infidelidade-texto">
+
+                CHANCE DE TRAIÇÃO
+
+            </div>
+
+
+            <div class="infidelidade-selo">
+
+                ✓ RASTRO DE TRAIÇÃO
+
+            </div>
+
         </div>
 
-        <p class="contador">${qtdEncontrados} Pessoas compatíveis no ${app}</p>
-        <p class="cidade-titulo">${qtdCidade} PESSOAS DE ${cidadeAlvo.toUpperCase()} USARAM O APP</p>
-        
+
+        <p class="contador">
+
+            ${qtdEncontrados}
+
+            Pessoas compatíveis no
+
+            ${app}
+
+        </p>
+
+
+        <p class="cidade-titulo">
+
+            ${qtdCidade}
+
+            PESSOAS DE
+
+            ${cidadeAlvo.toUpperCase()}
+
+            USARAM O APP
+
+        </p>
+
+
         <div class="carrossel-container">
-            <div class="carrossel" id="carrossel">${carrosselHTML}</div>
-            <p class="arraste">👈 ARRASTE PRO LADO 👉</p>
+
+            <div
+            class="carrossel"
+            id="carrossel"
+            >
+
+                ${carrosselHTML}
+
+            </div>
+
+
+            <p class="arraste">
+
+                👈 ARRASTE PRO LADO 👉
+
+            </p>
+
         </div>
-        
-        <button class="btn btn-secundario" onclick="novaConsulta()">🔄 NOVA CONSULTA</button>
-    </div>`;
+
+
+        <button
+        class="btn btn-secundario"
+        onclick="novaConsulta()"
+        >
+
+        🔄 NOVA CONSULTA
+
+        </button>
+
+    </div>
+
+    `;
+
 }
 
-function novaConsulta(){
-    document.getElementById('resultado').style.display='none';
-    document.getElementById('formulario').style.display='block';
-    document.getElementById('comoUsar').style.display='block';
+
+/* =========================
+   NOVA CONSULTA
+========================= */
+
+function novaConsulta() {
+
+    document.getElementById(
+        'resultado'
+    ).style.display = 'none';
+
+
+    document.getElementById(
+        'formulario'
+    ).style.display = 'block';
+
+
+    document.getElementById(
+        'comoUsar'
+    ).style.display = 'block';
+
 }
+
+
+/* =========================
+   INICIALIZAÇÃO
+========================= */
 
 window.onload = () => {
-    if(localStorage.getItem('secretto_user')){ document.getElementById('formulario').style.display='block'; }
-    else{ document.getElementById('cadastro').style.display='block'; }
-}
+
+    if(
+        localStorage.getItem(
+            'secretto_user'
+        )
+    ) {
+
+        document.getElementById(
+            'formulario'
+        ).style.display = 'block';
+
+    }
+
+    else {
+
+        document.getElementById(
+            'cadastro'
+        ).style.display = 'block';
+
+    }
+
+};
+
 </script>
+
 </body>
     </html>
